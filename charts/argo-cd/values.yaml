@@ -10,3 +10,8 @@ argo-cd:
   server:
     extraArgs:
       - --insecure
+    config:
+      repositories: |
+        - type: helm
+          url: https://argoproj.github.io/argo-helm
+          name: argo-cd
