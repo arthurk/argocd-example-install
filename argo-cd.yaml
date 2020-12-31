@@ -12,12 +12,6 @@ spec:
   project: default
   source:
     path: charts/argo-cd
-    # helm:
-    #   values: |
-    #     argo-cd:
-    #       server:
-    #         config:
-    #           url: localhost:8080
     repoURL: https://github.com/arthurk/argocd-example-install.git
     targetRevision: HEAD
   syncPolicy:
