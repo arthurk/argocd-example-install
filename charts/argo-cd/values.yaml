@@ -5,13 +5,13 @@ argo-cd:
   global:
     image:
       tag: v1.8.1
+  controller:
+    logLevel: warn
+  repoServer:
+    logLevel: warn
   dex:
     enabled: false
   server:
+    logLevel: warn
     extraArgs:
       - --insecure
-    config:
-      repositories: |
-        - type: helm
-          url: https://argoproj.github.io/argo-helm
-          name: argo-cd
