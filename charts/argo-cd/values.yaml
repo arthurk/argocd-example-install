@@ -12,7 +12,7 @@ argo-cd:
   dex:
     enabled: false
   server:
-    # logLevel: warn
+    logLevel: warn
     extraArgs:
       - --insecure
     config:
