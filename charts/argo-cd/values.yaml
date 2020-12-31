@@ -5,13 +5,13 @@ argo-cd:
   # global:
   #   image:
   #     tag: v1.8.1
-  # controller:
-  #   logLevel: warn
-  # repoServer:
-  #   logLevel: warn
+  controller:
+    logLevel: warn
+  repoServer:
+    logLevel: warn
   dex:
     enabled: false
   server:
-    # logLevel: warn
+    logLevel: warn
     extraArgs:
       - --insecure
