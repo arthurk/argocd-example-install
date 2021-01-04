@@ -1,18 +1,11 @@
-# https://github.com/argoproj/argo-helm/tree/master/charts/argo-cd
-
 argo-cd:
   installCRDs: false
   global:
     image:
       tag: v1.8.1
-  controller:
-    logLevel: warn
-  repoServer:
-    logLevel: warn
   dex:
     enabled: false
   server:
-    logLevel: warn
     extraArgs:
       - --insecure
     config:
