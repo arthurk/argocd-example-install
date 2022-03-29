@@ -5,7 +5,23 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
+      # If the git repo in which this is defined is private, then you need to create a secret containing the repo
+      # authentication credentials and URL so that when you allow ArgoCD to manage itself it can bootstrap properly.
       repositories: |
         - type: helm
           name: argo-cd
           url: https://argoproj.github.io/argo-helm
+        - type: git
+          url: https://example.com/private/repo.git
+          passwordSecret:
+            name: deployment-git-repo-credentials
+            key: password
+          usernameSecret:
+            name: deployment-git-repo-credentials
+            key: username
+      # Following the guide at https://argoproj.github.io/argo-cd/user-guide/diffing/#system-level-configuration
+      resource.customizations: |
+        admissionregistration.k8s.io/MutatingWebhookConfiguration:
+          ignoreDifferences: |
+            jsonPointers:
+            - /webhooks/0/clientConfig/caBundle
