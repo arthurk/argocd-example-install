@@ -1,11 +1,10 @@
 argo-cd:
   dex:
     enabled: false
+  notifications:
+    enabled: false
+  applicationSet:
+    enabled: false
   server:
     extraArgs:
       - --insecure
-    config:
-      repositories: |
-        - type: helm
-          name: argo-cd
-          url: https://argoproj.github.io/argo-helm

@@ -2,22 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prometheus
-  namespace: default
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
   project: default
   source:
+    repoURL: https://prometheus-community.github.io/helm-charts
     chart: prometheus
+    targetRevision: 25.3.1
     helm:
       values: |
         pushgateway:
           enabled: false
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 15.6.0
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
   syncPolicy:
     automated:
       prune: true
